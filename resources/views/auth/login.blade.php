@@ -23,13 +23,16 @@
                             </div>
                             <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password">Password</label>
-                                {{-- <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"> --}}
                                 <input id="password" type="password" class="form-control" name="password" placeholder="" autocomplete="off" required>
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" name="remember_me" class="custom-control-input" id="remember_me">
+                              <label class="custom-control-label" for="remember_me">Remember me </label>
                             </div>
                             <div class="form-footer">
                                 <button type="submit" class="btn btn-default login btn-primary">LOGIN</button>

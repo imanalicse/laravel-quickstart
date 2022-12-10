@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function Psy\debug;
 
 class LoginController extends Controller
 {
@@ -24,7 +25,9 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $remember_me = $request->get('remember_me');
+        $remember_me = filter_var($remember_me, FILTER_VALIDATE_BOOLEAN);
+        if (Auth::attempt($credentials, $remember_me)) {
             $request->session()->regenerate();
 
             return redirect()->intended('admin/dashboard');
