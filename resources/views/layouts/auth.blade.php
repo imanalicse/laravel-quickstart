@@ -17,11 +17,13 @@
 
 </head>
 <body>
-   @yield('content')
-    <div class="login-page-footer" style="position: fixed; bottom: 20px;right: 20px">
-        <p class="develop-buy"> Web Development by <a href="https://www.webalive.com.au" target="_blank">WebAlive</a></p>
+    <div class="container">
+       @yield('content')
+        <div class="login-page-footer" style="position: fixed; bottom: 20px;right: 20px">
+            <p class="develop-buy"> Web Development by <a href="https://www.webalive.com.au" target="_blank">WebAlive</a></p>
+        </div>
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
     </div>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

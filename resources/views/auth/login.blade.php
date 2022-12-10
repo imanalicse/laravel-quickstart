@@ -4,7 +4,6 @@
 
 <div class="login-page">
         <div class="branding-part text-center">
-            {{--<img src="{{asset('src/admin/img/w-logo.png')}}" alt="">--}}
             <img src="{{asset('src/admin/img/new-logo.png')}}" alt="" style="max-width: 337px">
         </div>
         <div class="login-wrapper">
@@ -34,7 +33,7 @@
                                 @endif
                             </div>
                             <div class="form-footer">
-                                <button type="submit" class="btn btn-default login ">LOGIN</button>
+                                <button type="submit" class="btn btn-default login btn-primary">LOGIN</button>
                             </div>
                         </div>
                 </form>
