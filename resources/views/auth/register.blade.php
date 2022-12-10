@@ -61,11 +61,10 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
+                            <button type="submit" class="btn btn-primary mt-4">
+                                Register
+                            </button>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">Have already an account? <a href="{{route('login')}}" class="link-danger">Login</a></p>
                         </div>
                     </form>
                 </div>

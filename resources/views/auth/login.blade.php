@@ -14,7 +14,7 @@
                             <div class="card-title"><h1>Log in</h1></div>
                             <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email">Email</label>
-                                <input id="email" type="email" class="form-control" aria-describedby="emailHelp" name="email" value="{{ old('email') }}" placeholder="" required autofocus>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="" required>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -30,12 +30,13 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="custom-control custom-checkbox">
+                            <div class="form-group">
                               <input type="checkbox" name="remember_me" class="custom-control-input" id="remember_me">
                               <label class="custom-control-label" for="remember_me">Remember me </label>
                             </div>
                             <div class="form-footer">
-                                <button type="submit" class="btn btn-default login btn-primary">LOGIN</button>
+                                <button type="submit" class="btn btn-default login btn-primary mt-4">LOGIN</button>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{route('registration')}}" class="link-danger">Register</a></p>
                             </div>
                         </div>
                 </form>

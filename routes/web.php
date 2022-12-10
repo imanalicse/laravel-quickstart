@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class,'login'])->name("login");
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.submit');
 
-Route::get('/registration', [RegisterController::class,'registration']);
+Route::get('/registration', [RegisterController::class,'registration'])->name("registration");
 Route::post('/registration', [RegisterController::class, 'registrationSubmit'])->name('registration.submit');
 
 Route::prefix('admin')->namespace('Admin')->group(static function() {
