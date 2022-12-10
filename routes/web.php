@@ -29,9 +29,11 @@ Route::get('/registration', [RegisterController::class,'registration'])->name("r
 Route::post('/registration', [RegisterController::class, 'registrationSubmit'])->name('registration.submit');
 
 Route::prefix('admin')->namespace('Admin')->group(static function() {
-    Route::get('/', [DashboardController::class, 'index']);
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/users', [UsersController::class, 'index']);
+    Route::middleware('admin')->group(static function () {
+        Route::get('/', [DashboardController::class, 'index']);
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/users', [UsersController::class, 'index']);
 
-    Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+        Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+    });
 });

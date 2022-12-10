@@ -14,7 +14,7 @@
                             <div class="card-title"><h1>Log in</h1></div>
                             <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email">Email</label>
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="" autocomplete="off" required autofocus>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
