@@ -13,8 +13,7 @@
                         <div class="content-box">
                             <div class="card-title"><h1>Log in</h1></div>
                             <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email">User Name</label>
-                                {{-- <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address"> --}}
+                                <label for="email">Email</label>
                                 <input id="email" type="email" class="form-control" aria-describedby="emailHelp" name="email" value="{{ old('email') }}" placeholder="" required autofocus>
                                 @if ($errors->has('email'))
                                     <span class="help-block">

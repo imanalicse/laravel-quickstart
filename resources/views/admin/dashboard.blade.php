@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    Admin Dashboard
+    <a href="/admin/logout">logout</a> <br>
+    <a href="/admin/users">User</a>
 @endsection
