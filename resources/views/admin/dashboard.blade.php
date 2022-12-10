@@ -1,6 +1,14 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <a href="/admin/logout">logout</a> <br>
+    <a class="dropdown-item" href="{{ route('logout') }}"
+        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        Logout
+    </a>
+    <br>
     <a href="/admin/users">User</a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
+
 @endsection
