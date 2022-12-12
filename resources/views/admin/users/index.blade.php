@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="page-content">
-        <a href="/admin/dashboard">dashboard</a>
         <table class="table-striped table table-responsive">
             <thead>
             <tr>
@@ -13,7 +12,6 @@
             </tr>
             </thead>
             <tbody>
-                    
                 @if(count($users) > 0)
                 @foreach($users as $user)
                     <tr>                        
@@ -22,7 +20,7 @@
                         <td class="fx-action-links text-center">
                             <div class="action-group">
                                 <a class="action view" href="{{url('/admin/customers/')}}"></a>
-                                <a class="action edit"></a>
+                                <a href="{{url('/admin/users/'.$user->id.'/edit')}}" class="action edit"></a>
                             </div>
                         </td>
                     </tr>

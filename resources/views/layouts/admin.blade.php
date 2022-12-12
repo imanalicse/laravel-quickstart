@@ -19,7 +19,7 @@ list($controller, $action) = explode('@', $controller);
 @include('admin.includes.sidebar')
 
 <div class="content-wrapper">
-    {{--            @include('admin/includes/navbar')--}}
+    @include('admin/includes/navbar')
     <div class="main-container">
         <br>
         {{--                @include('admin.includes.messages')--}}
