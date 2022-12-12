@@ -25,9 +25,10 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        $remember_me = $request->get('remember_me');
-        $remember_me = filter_var($remember_me, FILTER_VALIDATE_BOOLEAN);
-        if (Auth::attempt($credentials, $remember_me)) {
+//        $remember_me = $request->get('remember_me');
+//        $remember_me = filter_var($remember_me, FILTER_VALIDATE_BOOLEAN);
+        // if (Auth::attempt($credentials, $remember_me)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             return redirect()->intended('admin/dashboard');

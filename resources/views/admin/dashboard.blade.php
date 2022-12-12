@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <a class="dropdown-item" href="{{ route('logout') }}"
