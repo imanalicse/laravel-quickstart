@@ -6,7 +6,7 @@
             </div>
             <div class="head-right">
                 <div class="dropdown user-dropdown">
-                    <img src="{{asset('img/user.png')}}" alt="">
+                    <img src="{{asset('storage/images/user.png')}}" alt="">
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         {{--<a class="dropdown-item" href="#">{{ Auth::user()->name }}</a>                        --}}
                         <a class="dropdown-item" href="{{ route('logout') }}"
