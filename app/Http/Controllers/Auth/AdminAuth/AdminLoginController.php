@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth\AdminAuth;
 
+use App\Enum\UserRole;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class AdminLoginController extends Controller
             'password' => ['required'],
         ]);
 
-        $credentials['role_id'] = 1;
+        $credentials['role_id'] = UserRole::Admin->value;
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('admin/dashboard');
