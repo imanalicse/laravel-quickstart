@@ -1,22 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth\AdminAuth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AdminLoginController extends Controller
 {
     public function login() {
-        return view('auth.login');
+        return view('auth.admin_login');
     }
-    /**
-     * Handle an authentication attempt.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
@@ -24,12 +19,9 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-//        $remember_me = $request->get('remember_me');
-//        $remember_me = filter_var($remember_me, FILTER_VALIDATE_BOOLEAN);
-        // if (Auth::attempt($credentials, $remember_me)) {
-        if (Auth::attempt($credentials)) {
+        $credentials['role'] = 1;
+        if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
-
             return redirect()->intended('admin/dashboard');
         }
 

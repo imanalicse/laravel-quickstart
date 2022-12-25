@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\AdminAuth\AdminLoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use \App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,10 @@ Route::get('/registration', [RegisterController::class,'registration'])->name("r
 Route::post('/registration', [RegisterController::class, 'registrationSubmit'])->name('registration.submit');
 
 Route::prefix('admin')->namespace('Admin')->group(static function() {
+
+    Route::get('/login', [AdminLoginController::class, 'login'])->name("login.admin");
+    Route::post('/login', [AdminLoginController::class, 'authenticate'])->name('login.admin.submit');
+
     Route::middleware('admin')->group(static function () {
         Route::get('/', [DashboardController::class, 'index']);
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

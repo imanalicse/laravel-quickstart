@@ -11,9 +11,17 @@ class LogoutController extends Controller
 
     public function logout(Request $request)
     {
+        $is_admin = false;
+        if(Auth::guard('admin')->check()) {
+            $is_admin = true;
+        }
+
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        if ($is_admin) {
+            return redirect('/admin/login');
+        }
         return redirect('/login');
     }
 }
