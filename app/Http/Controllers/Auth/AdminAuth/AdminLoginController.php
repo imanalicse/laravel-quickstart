@@ -19,7 +19,7 @@ class AdminLoginController extends Controller
             'password' => ['required'],
         ]);
 
-        $credentials['role'] = 1;
+        $credentials['role_id'] = 1;
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('admin/dashboard');
