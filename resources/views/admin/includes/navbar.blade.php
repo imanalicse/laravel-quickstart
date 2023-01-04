@@ -2,7 +2,7 @@
         <div class="header-wrapper">
             <div class="head-left">
                 {{--<i class="fa fa-bars"></i>--}}
-                Hello {{ Auth::user()->name }}
+                Hello {{ Auth::guard('admin')->user()->name }}
             </div>
             <div class="head-right">
                 <div class="dropdown user-dropdown">
