@@ -917,11 +917,11 @@ ul.pagination li span {
 }
 
 .action-group .action.view {
-    background: url(../../storage/app/public/img/view-icon.png) no-repeat;
+    background: url(../../storage/app/public/images/view-icon.png) no-repeat;
 }
 
 .action-group .action.edit {
-    background: url(../../storage/app/public/img/edit-icon.png) no-repeat;
+    background: url(../../storage/app/public/images/edit-icon.png) no-repeat;
 }
 
 .action-group .action.view {

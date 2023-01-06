@@ -2,6 +2,7 @@ php artisan storage:link
  INFO  The [\laravel-quickstart\public\storage] link has been connected to [\laravel-quickstart\storage\app/public].
 
 php artisan serve
+php artisan serve --port=8080
 
 php artisan migrate
 php artisan make:migration create_flights_table
@@ -28,3 +29,16 @@ php artisan db:seed --class=UserSeeder
 php artisan optimize
 
 php artisan make:middleware EnsureTokenIsValid
+
+php artisan route:list
+php artisan make:controller PhotoController --resource
+php artisan make:controller PhotoController --model=Photo --resource --requests
+php artisan make:controller PhotoController --api
+
+php artisan make:model Flight --seed --controller --resource --requests --policy --pivot
+
+### Shortcut to generate a model, migration, factory, seeder, policy, controller, and form requests...
+php artisan make:model Flight --all
+
+### Inspecting Models
+php artisan model:show Flight 
