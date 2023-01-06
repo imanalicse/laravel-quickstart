@@ -8,93 +8,57 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function index()
+    public function index(Request $request)
     {
         $products = Product::paginate(20);
         $total_product = Product::count();
-        $session_search_key  = 'Test';
+        $search_key  = $request->query('search_key');
 
-        return view('admin.product.index', compact('products', 'total_product', 'session_search_key'));
+        return view('admin.product.index', compact('products', 'total_product', 'search_key'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.product.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $data = $request->all();
-        // $response = Product::created($data);
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'price' => 'required|numeric',
+        ]);
 
         $product = new Product();
-        $product->title = $request->title;
-        $product->price = floatval($request->price);
-        $product->save();
 
-        return redirect(route('products.index'))->with('success', 'Product has been created');
+//        $product->title = $request->title;
+//        $product->price = floatval($request->price);
+//        $product->save();
+
+        $data = $request->only($product->getFillable());
+        $data['price'] = floatval($data['price']);
+        $product->fill($data)->save();
+        return redirect()->route('products.index')->with('success', 'Product has been created');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function show(Product $product)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product)
     {
        return view("admin.product.edit", ['product' => $product]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Product $product)
     {
         $product->title = $request->input('title');
         $product->price = $request->input('price');
         $product->save();
-        return redirect()->back()->with('success', 'Product has been edited');
+        return redirect()->route('products.index')->with('success', 'Product has been edited');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Product $product)
     {
         $product->delete();

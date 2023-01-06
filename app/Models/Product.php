@@ -9,6 +9,11 @@ class Product extends Model
 {
     use HasFactory;
 
+     protected $fillable = [
+        'title',
+        'price'
+    ];
+
 //    public mixed $title;
 //    public float $price;
 }
