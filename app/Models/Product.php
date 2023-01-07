@@ -11,7 +11,8 @@ class Product extends Model
 
      protected $fillable = [
         'title',
-        'price'
+        'price',
+        'image'
     ];
 
 //    public mixed $title;

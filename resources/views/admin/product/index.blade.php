@@ -19,6 +19,7 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Price</th>
+                    <th>Image</th>
                     <th class="fx-action-links text-center">Actions</th>
                 </tr>
                 </thead>
@@ -30,6 +31,7 @@
                             <td>{{$product->id}}</td>
                             <td>{{$product->title}}</td>
                             <td>${{$product->price}}</td>
+                            <td><img src="{{asset('storage/'. $product->image)}}" alt="">{{$product->image}}</td>
                             <td class="fx-action-links text-center">
                                 <div class="action-group">                                    
                                     <a href="{{url('/admin/products/'.$product->id.'/edit')}}" class="action edit"></a>

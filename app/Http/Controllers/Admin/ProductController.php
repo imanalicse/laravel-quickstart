@@ -24,10 +24,10 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'price' => 'required|numeric',
-        ]);
+//        $request->validate([
+//            'title' => 'required|string|max:255',
+//            'price' => 'required|numeric',
+//        ]);
 
         $product = new Product();
 
@@ -37,6 +37,10 @@ class ProductController extends Controller
 
         $data = $request->only($product->getFillable());
         $data['price'] = floatval($data['price']);
+        if ($request->hasFile('image')) {
+            $path = $request->image->store('public/uploads');
+            $data['image'] = $path ?: '';
+        }
         $product->fill($data)->save();
         return redirect()->route('products.index')->with('success', 'Product has been created');
     }
