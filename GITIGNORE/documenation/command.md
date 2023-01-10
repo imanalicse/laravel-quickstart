@@ -42,3 +42,6 @@ php artisan make:model Flight --all
 
 ### Inspecting Models
 php artisan model:show Flight 
+
+php artisan view:cache
+php artisan view:clear

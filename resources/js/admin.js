@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function deleteConfirmation() {
-    document.querySelector(".delete-action-form").addEventListener("click", function (e) {
+    document.querySelector(".delete-action-form")?.addEventListener("click", function (e) {
         if (confirm("Are you sure to delete product?")) {
             return true;
         }
