@@ -45,3 +45,9 @@ php artisan model:show Flight
 
 php artisan view:cache
 php artisan view:clear
+
+# classed back component
+php artisan make:component Alert
+php artisan make:component Forms/Input
+## anonymous component 
+php artisan make:component forms.input --view

@@ -29,6 +29,6 @@
         </div>
 
         <div class="pagination-panel">
-
+            {{$products->links()}}
         </div>
 @endsection

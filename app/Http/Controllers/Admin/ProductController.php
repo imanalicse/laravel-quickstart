@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::paginate(20);
+        $products = Product::orderBy('id', 'desc')->paginate(10);
         $total_product = Product::count();
         $search_key  = $request->query('search_key');
 
@@ -29,8 +29,8 @@ class ProductController extends Controller
 //            'price' => 'required|numeric',
 //        ]);
 
+        /*
         $product = new Product();
-
 //        $product->title = $request->title;
 //        $product->price = floatval($request->price);
 //        $product->save();
@@ -42,6 +42,14 @@ class ProductController extends Controller
             $data['image'] = $path ?: '';
         }
         $product->fill($data)->save();
+        */
+
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            $path = $request->image->store('public/uploads');
+            $data['image'] = $path ?: '';
+        }
+        Product::create($data);
         return redirect()->route('products.index')->with('success', 'Product has been created');
     }
 
