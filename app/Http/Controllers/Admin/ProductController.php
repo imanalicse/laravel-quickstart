@@ -57,10 +57,13 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        $product->title = $request->input('title');
-        $product->price = $request->input('price');
-        $product->save();
-        return redirect()->route('products.index')->with('success', 'Product has been edited');
+        try {
+            $product->update($request->all());
+            return redirect()->route('products.index')->with('success', 'Product has been edited');
+        }
+        catch (\Exception $exception) {
+            return redirect()->route('products.index')->with('error', 'Unable to update');
+        }
     }
 
     public function destroy(Product $product)
