@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     @vite(['resources/css/admin.css'])
+    @vite(['resources/js/app.js'])
 </head>
 <body>
 <?php
@@ -21,8 +22,7 @@ list($controller, $action) = explode('@', $controller);
 <div class="content-wrapper">
     @include('admin/includes/navbar')
     <div class="main-container">
-        <br>
-        {{--                @include('admin.includes.messages')--}}
+        @include('admin.includes.messages')
         @yield('content')
     </div>
 </div>
