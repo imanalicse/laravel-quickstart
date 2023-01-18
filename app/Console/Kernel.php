@@ -15,7 +15,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // */2 * * * * - even minute
+        // 1-59/2 * * * * - odd minute
+        $schedule->command("video:process")->everyFiveMinutes()->withoutOverlapping()->runInBackground()->appendOutputTo(storage_path('/logs/video_process.log'));
+        $schedule->command("video:process")->everyThreeMinutes()->withoutOverlapping()->runInBackground()->appendOutputTo(storage_path('/logs/video_process2.log'));
     }
 
     /**
