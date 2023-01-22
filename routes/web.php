@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,6 @@ Route::prefix('admin')->group(static function() {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         Route::get('/users', [UsersController::class, 'index']);
         Route::resource('products', ProductController::class);
+        Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
     });
 });

@@ -6,6 +6,7 @@
         <ul>            
             <li class="<?php if($controller == 'DashboardController'){ echo 'active'; }  ?>"><a href="/admin">Dashboard</a></li>
             <li class="<?php if($controller == 'UsersController'){ echo 'active'; }  ?>"><a href="/admin/users">Users</a></li>
+            <li class="<?php if($controller == 'CategoryController'){ echo 'active'; }  ?>"><a href="{{ route('categories.index') }}">Categories</a></li>
             <li class="<?php if($controller == 'ProductController'){ echo 'active'; }  ?>"><a href="{{ route('products.index') }}">Products</a></li>
             <li class=""><a href="{{url('/admin/clear-config')}}" class="badge pending">Clear configuration</a></li>
         </ul>
