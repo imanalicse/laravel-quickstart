@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\View\Composer\CategoryComposer;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->isLocal()) {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
+
+        View::composer(['admin.category.index', 'admin.product.create'], CategoryComposer::class);
     }
 }
